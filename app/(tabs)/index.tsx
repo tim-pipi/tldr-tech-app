@@ -1,16 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container} edges={['top']}>
-        <ScrollView style={styles.scrollView}>
-          {/* News Letter here */}
+    <SafeAreaView style={styles.container} edges={['top']}>
+      <ScrollView style={styles.scrollView}>
+        {/* News Letter here */}
         </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
 
