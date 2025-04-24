@@ -1,7 +1,7 @@
 import NewsletterCard from '@/components/NewsletterCard';
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
