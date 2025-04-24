@@ -1,21 +1,26 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 
 interface NewsletterCardProps {
   title: string;
   description: string;
   image: string;
+  url: string;
 }
 
 export default function NewsletterCard({
   title,
   description,
   image,
+  url,
 }: NewsletterCardProps) {
   return (
     <View style={styles.container}>
       <Image source={{ uri: image }} style={styles.image} />
       <Text>{title}</Text>
       <Text>{description}</Text>
+      <TouchableOpacity onPress={() => Linking.openURL(url)}>
+        <Text>Read More</Text>
+      </TouchableOpacity>
     </View>
   );
 }
