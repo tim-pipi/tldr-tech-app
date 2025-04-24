@@ -1,5 +1,13 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Link } from 'expo-router';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
+import NewsletterWebView from '@/components/NewsletterWebView';
 
 interface NewsletterCardProps {
   title: string;
@@ -14,16 +22,29 @@ export default function NewsletterCard({
   image,
   url,
 }: NewsletterCardProps) {
+  const [isWebViewVisible, setIsWebViewVisible] = useState(false);
+
   return (
-    <Link href={{ pathname: '/webview', params: { url } }} asChild>
-      <TouchableOpacity>
+    <>
+      <TouchableOpacity onPress={() => setIsWebViewVisible(true)}>
         <View style={styles.container}>
           <Image source={{ uri: image }} style={styles.image} />
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{description}</Text>
         </View>
       </TouchableOpacity>
-    </Link>
+
+      <Modal
+        visible={isWebViewVisible}
+        animationType="slide"
+        onRequestClose={() => setIsWebViewVisible(false)}
+      >
+        <NewsletterWebView
+          url={url}
+          onClose={() => setIsWebViewVisible(false)}
+        />
+      </Modal>
+    </>
   );
 }
 
