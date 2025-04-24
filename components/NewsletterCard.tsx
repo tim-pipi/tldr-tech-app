@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 
 interface NewsletterCardProps {
   title: string;
@@ -14,14 +21,13 @@ export default function NewsletterCard({
   url,
 }: NewsletterCardProps) {
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: image }} style={styles.image} />
-      <Text>{title}</Text>
-      <Text>{description}</Text>
-      <TouchableOpacity onPress={() => Linking.openURL(url)}>
-        <Text>Read More</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => Linking.openURL(url)}>
+      <View style={styles.container}>
+        <Image source={{ uri: image }} style={styles.image} />
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -36,5 +42,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     borderRadius: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 12,
   },
 });
